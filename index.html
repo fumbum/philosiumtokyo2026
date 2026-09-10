@@ -40,6 +40,7 @@
 
   *{box-sizing:border-box;}
   html{scroll-behavior:smooth;}
+  [hidden]{display:none !important;}
   body{
     margin:0;
     background:var(--white);
@@ -83,7 +84,7 @@
     align-items:center;
     justify-content:space-between;
     flex-wrap:wrap;
-    gap:10px;
+    gap:14px;
   }
   .wordmark{
     font-family:var(--serif-en);
@@ -97,7 +98,7 @@
     font-style:normal;
     color:var(--gold);
   }
-  nav.masthead-nav{display:flex; gap:22px; font-size:0.85rem;}
+  nav.masthead-nav{display:flex; align-items:center; gap:22px; font-size:0.85rem; flex-wrap:wrap;}
   nav.masthead-nav a{
     text-decoration:none;
     color:var(--cream);
@@ -105,6 +106,21 @@
     letter-spacing:0.03em;
   }
   nav.masthead-nav a:hover{opacity:1; text-decoration:underline;}
+  .lang-toggle{
+    appearance:none;
+    background:transparent;
+    border:1px solid var(--cream);
+    color:var(--cream);
+    font-family:var(--serif-en);
+    font-size:0.78rem;
+    letter-spacing:0.04em;
+    padding:5px 13px;
+    border-radius:2px;
+    cursor:pointer;
+    opacity:0.85;
+    transition:opacity 0.15s ease, background 0.15s ease;
+  }
+  .lang-toggle:hover{opacity:1; background:rgba(250,244,226,0.1);}
 
   /* ---------- Hero ---------- */
   section.hero{
@@ -334,7 +350,7 @@
     font-weight:600;
     white-space:nowrap;
   }
-  table.program tr:last-child td{border-bottom:none;}
+  table.program tr.last td{border-bottom:none;}
   table.program .speaker{
     display:block;
     margin-top:4px;
@@ -379,23 +395,6 @@
     margin:0 0 8px;
     font-weight:600;
   }
-
-  /* english strip */
-  section.en-strip{
-    background:var(--navy);
-    color:var(--cream);
-  }
-  section.en-strip h2.section-title{
-    color:var(--cream);
-    border-bottom-color:var(--gold);
-  }
-  section.en-strip p{
-    color:#d9d4c2;
-    font-family:var(--serif-en);
-    font-size:0.92rem;
-    line-height:1.85;
-  }
-  section.en-strip a{color:var(--gold); text-decoration:underline;}
 
   /* final cta */
   section.final-cta{
@@ -445,11 +444,16 @@
   <div class="masthead-inner">
     <a class="wordmark" href="#top">Φ<em>hilosium</em> Tokyo</a>
     <nav class="masthead-nav">
-      <a href="#about">概要</a>
-      <a href="#info">日時・会場</a>
-      <a href="#program">プログラム</a>
-      <a href="#register">参加登録</a>
+      <a href="#about" class="lang-ja">概要</a>
+      <a href="#about" class="lang-en" hidden>About</a>
+      <a href="#info" class="lang-ja">日時・会場</a>
+      <a href="#info" class="lang-en" hidden>Date &amp; Venue</a>
+      <a href="#program" class="lang-ja">プログラム</a>
+      <a href="#program" class="lang-en" hidden>Program</a>
+      <a href="#register" class="lang-ja">参加登録</a>
+      <a href="#register" class="lang-en" hidden>Register</a>
     </nav>
+    <button type="button" id="lang-toggle" class="lang-toggle" aria-label="Switch to English">EN</button>
   </div>
 </header>
 
@@ -458,91 +462,141 @@
   <div class="hero-grain" aria-hidden="true"></div>
   <div class="wrap">
     <p class="eyebrow">Philosium Tokyo 2026</p>
-    <h1 class="title">君たちはどう生きるか</h1>
-    <p class="subtitle">効果的利他主義とグローバルな問題</p>
-    <p class="hook">理性と根拠、そして倫理的考察から、社会に最大限の「善」を生み出すには？<br>
+    <h1 class="title lang-ja">君たちはどう生きるか</h1>
+    <h1 class="title lang-en" hidden>How Do You Live?</h1>
+    <p class="subtitle lang-ja">効果的利他主義とグローバルな問題</p>
+    <p class="subtitle lang-en" hidden>Effective Altruism and Global Problems</p>
+    <p class="hook lang-ja">理性と根拠、そして倫理的考察から、社会に最大限の「善」を生み出すには？<br>
     日本初となる、青年のためのEffective Altruism（効果的利他主義）カンファレンス。</p>
+    <p class="hook lang-en" hidden>How can reason, evidence, and ethical reflection help us do the most good for society?<br>
+    Japan's first Effective Altruism conference for young people.</p>
     <div class="hero-meta">
-      <span>2026年9月19日（土）10:00〜15:15</span>
-      <span>東京大学駒場キャンパス 13号館1311</span>
+      <span class="lang-ja">2026年9月19日（土）10:00〜15:15</span>
+      <span class="lang-en" hidden>September 19, 2026 (Sat), 10:00–15:15</span>
+      <span class="lang-ja">東京大学駒場キャンパス 13号館1311</span>
+      <span class="lang-en" hidden>University of Tokyo, Komaba Campus, Bldg. 13, Rm. 1311</span>
     </div>
-    <a class="cta" href="https://forms.gle/Ca6pWJ7sjqAA4ue4A" target="_blank" rel="noopener">参加登録はこちら →</a>
-    <span class="cta-note">参加費無料 ／ 定員 約100名</span>
+    <a class="cta lang-ja" href="https://forms.gle/Ca6pWJ7sjqAA4ue4A" target="_blank" rel="noopener">参加登録はこちら →</a>
+    <a class="cta lang-en" href="https://forms.gle/Ca6pWJ7sjqAA4ue4A" target="_blank" rel="noopener" hidden>Register here →</a>
+    <span class="cta-note lang-ja">参加費無料 ／ 定員 約100名</span>
+    <span class="cta-note lang-en" hidden>Free admission / Capacity ~100</span>
   </div>
 </section>
 
 <section id="about">
   <div class="wrap">
-    <h2 class="section-title">この会について</h2>
-    <p>理性、根拠、そして倫理的考察を使って、社会に最大限のポジティブな影響を生み出すには、どうすればいいのだろう？</p>
-    <p>フィロシウム東京2026は、日本初となる青年向けEffective Altruism（効果的利他主義）カンファレンスです。学生、研究者、若手専門家が一堂に会し、AIの安全性、グローバルヘルス、動物福祉、そして限られた時間とリソースで実際に「良いこと」をするにはどうすればいいのか——そんな、これからの社会を形づくる問いについて、本気で考える一日です。</p>
-    <p>基調講演4本（効果的利他主義、AIガバナンス、動物の福祉、AGIがもたらす産業技術爆発）に加え、参加型ワークショップやランチ・ディベート、そしてこの分野の第一線で活躍する専門家によるキャリアパネルなど、盛りだくさんの一日です。同じ視点を持つ仲間に出会えるのはもちろん、自分の考え方を揺さぶられるような出会いもきっとあるはずです。</p>
-    <p>フィロシウム東京2026は、Effective Altruism Japanおよび UTokyo AI Safety との共催で開催されます。</p>
+    <h2 class="section-title lang-ja">この会について</h2>
+    <h2 class="section-title lang-en" hidden>About This Event</h2>
+    <p class="lang-ja">理性、根拠、そして倫理的考察を使って、社会に最大限のポジティブな影響を生み出すには、どうすればいいのだろう？</p>
+    <p class="lang-en" hidden>How can we use reason, evidence, and ethical reflection to create the most positive impact on society?</p>
+    <p class="lang-ja">フィロシウム東京2026は、日本初となる青年向けEffective Altruism（効果的利他主義）カンファレンスです。学生、研究者、若手専門家が一堂に会し、AIの安全性、グローバルヘルス、動物福祉、そして限られた時間とリソースで実際に「良いこと」をするにはどうすればいいのか——そんな、これからの社会を形づくる問いについて、本気で考える一日です。</p>
+    <p class="lang-en" hidden>Philosium Tokyo 2026 is Japan's first Effective Altruism conference for young people. Students, researchers, and young professionals will spend a day thinking seriously about AI safety, global health, animal welfare, and how to actually do good with limited time and resources — the questions that will shape the society we're building.</p>
+    <p class="lang-ja">基調講演4本（効果的利他主義、AIガバナンス、動物の福祉、AGIがもたらす産業技術爆発）に加え、参加型ワークショップやランチ・ディベート、そしてこの分野の第一線で活躍する専門家によるキャリアパネルなど、盛りだくさんの一日です。同じ視点を持つ仲間に出会えるのはもちろん、自分の考え方を揺さぶられるような出会いもきっとあるはずです。</p>
+    <p class="lang-en" hidden>Alongside four keynote talks (effective altruism, AI governance, animal welfare, and the coming AGI-driven industrial and technological explosion), the day includes participatory workshops, a lunch debate, and a career panel with leading experts in the field. You'll meet people who share your outlook — and, just as likely, have your own thinking challenged.</p>
+    <p class="lang-ja">フィロシウム東京2026は、Effective Altruism Japanおよび UTokyo AI Safety との共催で開催されます。</p>
+    <p class="lang-en" hidden>Philosium Tokyo 2026 is co-hosted with Effective Altruism Japan and UTokyo AI Safety.</p>
   </div>
 </section>
 
 <section class="alt" id="info">
   <div class="wrap">
-    <h2 class="section-title">日時・会場</h2>
+    <h2 class="section-title lang-ja">日時・会場</h2>
+    <h2 class="section-title lang-en" hidden>Date &amp; Venue</h2>
     <dl class="info-grid">
-      <dt>日時</dt>
-      <dd>2026年9月19日（土）10:00〜15:15（〜16:30 ネットワーキングあり／一日を通しての参加が難しい方も歓迎です）</dd>
-      <dt>会場</dt>
-      <dd>東京大学駒場キャンパス 13号館1311</dd>
-      <dt>対象</dt>
-      <dd>高校生・大学生・若手専門家（哲学、AI、グローバルヘルス、動物福祉、公共政策、社会的インパクトに関心のある方）</dd>
-      <dt>定員</dt>
-      <dd>約100名</dd>
-      <dt>参加費</dt>
-      <dd>無料</dd>
-      <dt>使用言語</dt>
-      <dd>日本語</dd>
-      <dt>主催</dt>
-      <dd>Philosium（フィロシウム）</dd>
-      <dt>共催</dt>
-      <dd>Effective Altruism Japan、UTokyo AI Safety</dd>
+      <dt class="lang-ja">日時</dt>
+      <dd class="lang-ja">2026年9月19日（土）10:00〜15:15（〜16:30 ネットワーキングあり／一日を通しての参加が難しい方も歓迎です）</dd>
+      <dt class="lang-en" hidden>Date &amp; Time</dt>
+      <dd class="lang-en" hidden>September 19, 2026 (Sat), 10:00–15:15 (networking until 16:30 — partial attendance welcome)</dd>
+      <dt class="lang-ja">会場</dt>
+      <dd class="lang-ja">東京大学駒場キャンパス 13号館1311</dd>
+      <dt class="lang-en" hidden>Venue</dt>
+      <dd class="lang-en" hidden>University of Tokyo, Komaba Campus, Building 13, Room 1311</dd>
+      <dt class="lang-ja">対象</dt>
+      <dd class="lang-ja">高校生・大学生・若手専門家（哲学、AI、グローバルヘルス、動物福祉、公共政策、社会的インパクトに関心のある方）</dd>
+      <dt class="lang-en" hidden>Who Should Attend</dt>
+      <dd class="lang-en" hidden>High school &amp; university students, young professionals — anyone interested in philosophy, AI, global health, animal welfare, public policy, or social impact</dd>
+      <dt class="lang-ja">定員</dt>
+      <dd class="lang-ja">約100名</dd>
+      <dt class="lang-en" hidden>Capacity</dt>
+      <dd class="lang-en" hidden>~100</dd>
+      <dt class="lang-ja">参加費</dt>
+      <dd class="lang-ja">無料</dd>
+      <dt class="lang-en" hidden>Cost</dt>
+      <dd class="lang-en" hidden>Free</dd>
+      <dt class="lang-ja">使用言語</dt>
+      <dd class="lang-ja">日本語</dd>
+      <dt class="lang-en" hidden>Language</dt>
+      <dd class="lang-en" hidden>Japanese</dd>
+      <dt class="lang-ja">主催</dt>
+      <dd class="lang-ja">Philosium（フィロシウム）</dd>
+      <dt class="lang-en" hidden>Organizer</dt>
+      <dd class="lang-en" hidden>Philosium</dd>
+      <dt class="lang-ja">共催</dt>
+      <dd class="lang-ja">Effective Altruism Japan、UTokyo AI Safety</dd>
+      <dt class="lang-en" hidden>Co-hosts</dt>
+      <dd class="lang-en" hidden>Effective Altruism Japan, UTokyo AI Safety</dd>
     </dl>
   </div>
 </section>
 
 <section id="program">
   <div class="wrap">
-    <h2 class="section-title">当日のプログラム（予定）</h2>
+    <h2 class="section-title lang-ja">当日のプログラム（予定）</h2>
+    <h2 class="section-title lang-en" hidden>Schedule (Tentative)</h2>
     <table class="program">
-      <tr><td class="time">09:00</td><td>受付開始</td></tr>
-      <tr><td class="time">10:00</td><td>開会挨拶</td></tr>
-      <tr><td class="time">10:10</td><td>基調講演①「効果的利他主義とは」＋ Q&A・ディスカッション<span class="speaker">講演者：綿引周</span></td></tr>
-      <tr><td class="time">11:00</td><td>基調講演②「AIガバナンスとリスク」／ワークショップ<span class="speaker">講演者：神楽坂やちま</span></td></tr>
-      <tr><td class="time">12:00</td><td>基調講演③「動物の福祉」<span class="speaker">講演者：目黒みどり</span></td></tr>
-      <tr><td class="time">12:30</td><td>昼食（ヴィーガン対応）／ワークショップ：ランチ・ディベート</td></tr>
-      <tr><td class="time">13:15</td><td>キャリア×利他主義パネル ＋ Q&A<span class="speaker">パネリスト：綿引周、神楽坂やちま、bioshok、井上実咲</span></td></tr>
-      <tr><td class="time">14:05</td><td>基調講演④「AGIがもたらす産業技術爆発」＋ Q&A・ディスカッション<span class="speaker">講演者：bioshok</span></td></tr>
-      <tr><td class="time">15:05</td><td>閉会挨拶</td></tr>
-      <tr><td class="time">15:15〜16:30</td><td>ネットワーキング／EA (ACX) ミートアップ</td></tr>
+      <tr class="lang-ja"><td class="time">09:00</td><td>受付開始</td></tr>
+      <tr class="lang-en" hidden><td class="time">09:00</td><td>Check-in opens</td></tr>
+      <tr class="lang-ja"><td class="time">10:00</td><td>開会挨拶</td></tr>
+      <tr class="lang-en" hidden><td class="time">10:00</td><td>Opening remarks</td></tr>
+      <tr class="lang-ja"><td class="time">10:10</td><td>基調講演①「効果的利他主義とは」＋ Q&A・ディスカッション<span class="speaker">講演者：綿引周</span></td></tr>
+      <tr class="lang-en" hidden><td class="time">10:10</td><td>Keynote ① "What Is Effective Altruism?" + Q&amp;A<span class="speaker">Speaker: 綿引周</span></td></tr>
+      <tr class="lang-ja"><td class="time">11:00</td><td>基調講演②「AIガバナンスとリスク」／ワークショップ<span class="speaker">講演者：神楽坂やちま</span></td></tr>
+      <tr class="lang-en" hidden><td class="time">11:00</td><td>Keynote ② "AI Governance and Risk" / Workshop<span class="speaker">Speaker: 神楽坂やちま</span></td></tr>
+      <tr class="lang-ja"><td class="time">12:00</td><td>基調講演③「動物の福祉」<span class="speaker">講演者：目黒みどり</span></td></tr>
+      <tr class="lang-en" hidden><td class="time">12:00</td><td>Keynote ③ "Animal Welfare"<span class="speaker">Speaker: 目黒みどり</span></td></tr>
+      <tr class="lang-ja"><td class="time">12:30</td><td>昼食（ヴィーガン対応）／ワークショップ：ランチ・ディベート</td></tr>
+      <tr class="lang-en" hidden><td class="time">12:30</td><td>Lunch (vegan options available) / Workshop: Lunch Debate</td></tr>
+      <tr class="lang-ja"><td class="time">13:15</td><td>キャリア×利他主義パネル ＋ Q&A<span class="speaker">パネリスト：綿引周、神楽坂やちま、bioshok、井上実咲</span></td></tr>
+      <tr class="lang-en" hidden><td class="time">13:15</td><td>Careers × Altruism Panel + Q&amp;A<span class="speaker">Panelists: 綿引周, 神楽坂やちま, bioshok, 井上実咲</span></td></tr>
+      <tr class="lang-ja"><td class="time">14:05</td><td>基調講演④「AGIがもたらす産業技術爆発」＋ Q&A・ディスカッション<span class="speaker">講演者：bioshok</span></td></tr>
+      <tr class="lang-en" hidden><td class="time">14:05</td><td>Keynote ④ "The Coming AGI-Driven Industrial Explosion" + Q&amp;A<span class="speaker">Speaker: bioshok</span></td></tr>
+      <tr class="lang-ja"><td class="time">15:05</td><td>閉会挨拶</td></tr>
+      <tr class="lang-en" hidden><td class="time">15:05</td><td>Closing remarks</td></tr>
+      <tr class="lang-ja last"><td class="time">15:15〜16:30</td><td>ネットワーキング／EA (ACX) ミートアップ</td></tr>
+      <tr class="lang-en last" hidden><td class="time">15:15–16:30</td><td>Networking / EA (ACX) meetup</td></tr>
     </table>
   </div>
 </section>
 
 <section class="alt">
   <div class="wrap">
-    <h2 class="section-title">参加するメリット</h2>
+    <h2 class="section-title lang-ja">参加するメリット</h2>
+    <h2 class="section-title lang-en" hidden>Why Attend</h2>
     <ul class="benefits">
-      <li>参加費は無料です</li>
-      <li>日本で初めての試み——コミュニティの立ち上げ期から関わるチャンスです</li>
-      <li>一度きりの講演で終わらない、難しい倫理的問いを考え抜くための実践的な視点が身につきます</li>
-      <li>抽選で選ばれた参加者には、キャリアパネルへの登壇機会も——登壇者と直接向き合い、5分間、自分の質問や関心をぶつけられます</li>
+      <li class="lang-ja">参加費は無料です</li>
+      <li class="lang-en" hidden>It's free to attend</li>
+      <li class="lang-ja">日本で初めての試み——コミュニティの立ち上げ期から関わるチャンスです</li>
+      <li class="lang-en" hidden>Japan's first event like this — a chance to get in on the ground floor of this community</li>
+      <li class="lang-ja">一度きりの講演で終わらない、難しい倫理的問いを考え抜くための実践的な視点が身につきます</li>
+      <li class="lang-en" hidden>You'll leave with practical ways of thinking through hard ethical questions — not just a one-off lecture</li>
+      <li class="lang-ja">抽選で選ばれた参加者には、キャリアパネルへの登壇機会も——登壇者と直接向き合い、5分間、自分の質問や関心をぶつけられます</li>
+      <li class="lang-en" hidden>Participants chosen by lottery get a seat on the career panel itself — five minutes face-to-face with the speakers to raise your own questions and interests</li>
     </ul>
   </div>
 </section>
 
 <section>
   <div class="wrap">
-    <h2 class="section-title">主催団体について</h2>
-    <p>フィロシウムは、2024年に国際哲学オリンピアードをきっかけに生まれた、青年主導の国際非営利団体です。学生同士の何気ない会話から始まった活動は、今では60か国以上、100名を超えるボランティアからなるネットワークへと成長しました。私たちは、哲学は学問の世界だけにとどまるべきではなく、現実の課題に取り組むための実践的なツールであるべきだと考えています。</p>
-    <p>これまでポーランド・クレシュフフでの学生約450名規模のカンファレンス、ブダペストでのYouth Philosophy Symposium（ジョン・D・ノートン教授ほか、ハーバード・プリンストン・カーネギーメロンの学生パネルが登壇）、クロアチア・マカルスカでの高校生向けワークショップなど、世界各地で哲学教育イベントを実施してきました。詳しくは <a href="https://philosium.com" target="_blank" rel="noopener" style="color:var(--gold-deep); text-decoration:underline;">philosium.com</a> をご覧ください。</p>
+    <h2 class="section-title lang-ja">主催団体について</h2>
+    <h2 class="section-title lang-en" hidden>About Philosium</h2>
+    <p class="lang-ja">フィロシウムは、2024年に国際哲学オリンピアードをきっかけに生まれた、青年主導の国際非営利団体です。学生同士の何気ない会話から始まった活動は、今では60か国以上、100名を超えるボランティアからなるネットワークへと成長しました。私たちは、哲学は学問の世界だけにとどまるべきではなく、現実の課題に取り組むための実践的なツールであるべきだと考えています。</p>
+    <p class="lang-en" hidden>Philosium began in 2024 at the International Philosophy Olympiad and has grown into a youth-led international nonprofit — what started as conversations between students is now a network of 100+ volunteers across 60+ countries. We believe philosophy shouldn't stay confined to academia; it should be a practical tool for tackling real-world problems.</p>
+    <p class="lang-ja">これまでポーランド・クレシュフフでの学生約450名規模のカンファレンス、ブダペストでのYouth Philosophy Symposium（ジョン・D・ノートン教授ほか、ハーバード・プリンストン・カーネギーメロンの学生パネルが登壇）、クロアチア・マカルスカでの高校生向けワークショップなど、世界各地で哲学教育イベントを実施してきました。詳しくは <a href="https://philosium.com" target="_blank" rel="noopener" style="color:var(--gold-deep); text-decoration:underline;">philosium.com</a> をご覧ください。</p>
+    <p class="lang-en" hidden>We've run philosophy education events around the world — a conference for roughly 450 students in Wrocław, Poland; the Youth Philosophy Symposium in Budapest (with Prof. John D. Norton and a student panel from Harvard, Princeton, and Carnegie Mellon); and a workshop for high schoolers in Makarska, Croatia. Learn more at <a href="https://philosium.com" target="_blank" rel="noopener" style="color:var(--gold-deep); text-decoration:underline;">philosium.com</a>.</p>
 
     <div class="people-group" style="margin-top:34px;">
-      <h3>Organizers</h3>
+      <h3 class="lang-ja">運営メンバー</h3>
+      <h3 class="lang-en" hidden>Organizers</h3>
       <div class="people">
         <span>Timofey Goshka</span>
         <span>Niko Carter</span>
@@ -552,18 +606,14 @@
   </div>
 </section>
 
-<section class="en-strip">
-  <div class="wrap">
-    <h2 class="section-title">In English</h2>
-    <p>Philosium Tokyo 2026 is Japan's first Effective Altruism conference for young people — a one-day gathering on September 19, 2026 at the University of Tokyo's Komaba Campus, bringing together students, researchers, and young professionals to think seriously about AI safety, global health, animal welfare, and how to do the most good with limited time and resources, through talks, participatory workshops, and a career panel. Free to attend, capped at roughly 100 participants. Co-hosted with EA Japan and UTokyo AI Safety. Organized by Philosium, a youth-led international nonprofit born from the International Philosophy Olympiad in 2024, now a network of 100+ volunteers across 60+ countries — see <a href="https://philosium.com" target="_blank" rel="noopener">philosium.com</a>.</p>
-  </div>
-</section>
-
 <section class="final-cta" id="register">
   <div class="wrap">
-    <h2 class="section-title">参加登録</h2>
-    <p>定員は約100名です。ぜひ下記フォームよりお申し込みください。</p>
-    <a class="cta" href="https://forms.gle/Ca6pWJ7sjqAA4ue4A" target="_blank" rel="noopener">参加登録フォームを開く →</a>
+    <h2 class="section-title lang-ja">参加登録</h2>
+    <h2 class="section-title lang-en" hidden>Register</h2>
+    <p class="lang-ja">定員は約100名です。ぜひ下記フォームよりお申し込みください。</p>
+    <p class="lang-en" hidden>Capacity is about 100. Please register using the form below.</p>
+    <a class="cta lang-ja" href="https://forms.gle/Ca6pWJ7sjqAA4ue4A" target="_blank" rel="noopener">参加登録フォームを開く →</a>
+    <a class="cta lang-en" href="https://forms.gle/Ca6pWJ7sjqAA4ue4A" target="_blank" rel="noopener" hidden>Open registration form →</a>
   </div>
 </section>
 
@@ -578,6 +628,34 @@
     </div>
   </div>
 </footer>
+
+<script>
+(function(){
+  var root = document.documentElement;
+  var btn = document.getElementById('lang-toggle');
+  function apply(lang){
+    root.lang = lang;
+    var jaEls = document.querySelectorAll('.lang-ja');
+    var enEls = document.querySelectorAll('.lang-en');
+    for (var i = 0; i < jaEls.length; i++) { jaEls[i].hidden = (lang === 'en'); }
+    for (var j = 0; j < enEls.length; j++) { enEls[j].hidden = (lang !== 'en'); }
+    if (btn) {
+      btn.textContent = lang === 'en' ? '日本語' : 'EN';
+      btn.setAttribute('aria-label', lang === 'en' ? '日本語に切り替え' : 'Switch to English');
+    }
+  }
+  var saved = null;
+  try { saved = localStorage.getItem('philosium-lang'); } catch (e) {}
+  apply(saved === 'en' ? 'en' : 'ja');
+  if (btn) {
+    btn.addEventListener('click', function(){
+      var next = root.lang === 'en' ? 'ja' : 'en';
+      apply(next);
+      try { localStorage.setItem('philosium-lang', next); } catch (e) {}
+    });
+  }
+})();
+</script>
 
 </body>
 </html>
